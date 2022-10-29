@@ -42,7 +42,7 @@ export class App extends Component {
   };
   filterContact = () => {
     const { filter, contacts } = this.state;
-    const filtere = filter.toLowerCase();
+    const filtere = filter.trim().toLowerCase();
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(filtere)
     );
