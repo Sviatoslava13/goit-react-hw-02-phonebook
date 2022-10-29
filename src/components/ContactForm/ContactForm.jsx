@@ -1,36 +1,38 @@
-import s from './ContactForm.module.css';
-const ContactForm = ({handleSubmit, handleChange, number, name}) => (
-  <form className={s.form} onSubmit={handleSubmit}>
-    <label className={s.label}>
-      Name
-      <input
-        className={s.input}
-        type="text"
-        name="name"
-        value={name}
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
-        onChange={handleChange}
-      />
-    </label>
+import React, { Component } from 'react';
+import Forma from './Forma';
+import { nanoid } from 'nanoid';
 
-    <label className={s.label}>
-      Number
-      <input
-        className={s.input}
-        type="tel"
-        name="number"
-          value={number}
-        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        required
-             onChange={handleChange}
-      />
-    </label>
-    <button className={s.submit} type="submit">
-      Add contact
-    </button>
-  </form>
-);
+class ContactForm extends Component {
+  state = {
+    name: '',
+    number: '',
+  };
+
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value, id: nanoid() });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.addContact(this.state);
+    this.reset();
+  };
+  reset = () => {
+    this.setState({ name: '', number: '' });
+  };
+
+  render() {
+    return (
+      <>
+        <Forma
+          name={this.state.name}
+          number={this.state.number}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+        />
+      </>
+    );
+  }
+}
+
 export default ContactForm;

@@ -5,7 +5,6 @@
   margin: 0 auto;
   margin-top: 10px;
   padding: 10px;
-      box-shadow: 2px 2px 2px 2px #b7a7a7;
 }
 
 .item {
@@ -28,5 +27,5 @@
 }
 .link{
   text-decoration: none;
-
+margin-left: 5px;
 }
