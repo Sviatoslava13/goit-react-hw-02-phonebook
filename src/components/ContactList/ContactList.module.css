@@ -4,11 +4,14 @@
   max-width: 300px;
   margin: 0 auto;
   margin-top: 10px;
+  padding: 10px;
+      box-shadow: 2px 2px 2px 2px #b7a7a7;
 }
 
 .item {
   margin-bottom: 5px;
   display: flex;
+  justify-content: space-between;
 }
 .delete {
   margin-left: 10px;
@@ -22,9 +25,8 @@
 }
 .text{
   margin: 0;
-    margin-right: 10px;
 }
 .link{
   text-decoration: none;
-  color: black;
+
 }
