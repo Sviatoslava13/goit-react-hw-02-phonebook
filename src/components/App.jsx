@@ -15,8 +15,7 @@ export class App extends Component {
   };
 
   addContact = newContact => {
-    this.state.contacts.some(contact => contact.name === newContact.name) ||
-    this.state.contacts.some(contact => contact.number === newContact.number)
+    this.state.contacts.some(contact => contact.name.trim().toLowerCase() === newContact.name.trim().toLowerCase())
       ? alert(`${newContact.name} is already in contacts `)
       : this.setState(prev => ({ contacts: [...prev.contacts, newContact] }));
   };
@@ -36,7 +35,7 @@ export class App extends Component {
   render() {
     const filterContact = this.filterContact();
     return (
-      <>
+      <div className={s.container}>
         <h1 className={s.title}>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
         <h2 className={s.title}>Contacts</h2>
@@ -47,7 +46,7 @@ export class App extends Component {
             removeContact={this.removeContact}
           />
         )}
-      </>
+      </div>
     );
   }
 }
