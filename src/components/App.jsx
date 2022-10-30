@@ -17,7 +17,7 @@ export class App extends Component {
   addContact = newContact => {
     this.state.contacts.some(contact => contact.name === newContact.name) ||
     this.state.contacts.some(contact => contact.number === newContact.number)
-      ? alert(`${newContact.name} Is already in contacts `)
+      ? alert(`${newContact.name} is already in contacts `)
       : this.setState(prev => ({ contacts: [...prev.contacts, newContact] }));
   };
 

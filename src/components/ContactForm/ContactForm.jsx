@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Forma from './Forma';
 import { nanoid } from 'nanoid';
-
+import PropTypes from 'prop-types';
 class ContactForm extends Component {
+static defaultProps = {
+    addContact: PropTypes.func.isRequired,
+  };
   state = {
     name: '',
     number: '',
