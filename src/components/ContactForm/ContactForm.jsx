@@ -3,9 +3,6 @@ import Forma from './Forma';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 class ContactForm extends Component {
-static defaultProps = {
-    addContact: PropTypes.func.isRequired,
-  };
   state = {
     name: '',
     number: '',
@@ -13,11 +10,11 @@ static defaultProps = {
 
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value, id: nanoid() });
+    this.setState({ [name]: value });
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addContact(this.state);
+    this.props.addContact({ ...this.state, id: nanoid() });
     this.reset();
   };
   reset = () => {
@@ -37,5 +34,7 @@ static defaultProps = {
     );
   }
 }
-
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+};
 export default ContactForm;

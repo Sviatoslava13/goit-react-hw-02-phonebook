@@ -5,7 +5,7 @@ const ContactList = ({ contacts, removeContact }) => (
     {contacts.map(({ id, name, number }) => (
       <li key={id} className={s.item}>
         <p className={s.text}>
-          {name}:{' '}
+          {name}:
           <a className={s.link} href={`tel:${number}`}>
             {number}
           </a>

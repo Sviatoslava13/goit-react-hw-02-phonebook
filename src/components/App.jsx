@@ -1,6 +1,5 @@
 import s from './App.module.css';
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
@@ -10,8 +9,7 @@ export class App extends Component {
     filter: '',
   };
   handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value, id: nanoid() });
+    this.setState({ filter: e.currentTarget.value});
   };
 
   addContact = newContact => {
